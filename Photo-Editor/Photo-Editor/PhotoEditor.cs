@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace Photo_Editor
 {
-    public partial class Form1 : Form
+    public partial class PhotoEditor : Form
     {
-        public Form1()
+        private string ImageLocation;
+
+        public PhotoEditor()
         {
             InitializeComponent();
+        }
+
+        public PhotoEditor(string s)
+        {
+            InitializeComponent();
+
+            this.ImageLocation = s;
+
+            pictureBox.Image = Image.FromFile(ImageLocation);
         }
     }
 }
