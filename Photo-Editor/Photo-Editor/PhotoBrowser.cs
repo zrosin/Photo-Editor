@@ -18,6 +18,7 @@ namespace Photo_Editor
         private List<FileInfo> photoFiles;
         public ListBox.ObjectCollection Items { get; }
 
+        //This does a thing
         public PhotoBrowser()
         {
             InitializeComponent();
