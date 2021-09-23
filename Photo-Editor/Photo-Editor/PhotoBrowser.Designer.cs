@@ -37,11 +37,12 @@
             // 
             this.PictureList.HideSelection = false;
             this.PictureList.Location = new System.Drawing.Point(298, 12);
+            this.PictureList.MultiSelect = false;
             this.PictureList.Name = "PictureList";
             this.PictureList.Size = new System.Drawing.Size(490, 426);
             this.PictureList.TabIndex = 0;
             this.PictureList.UseCompatibleStateImageBehavior = false;
-            this.PictureList.DoubleClick += new System.EventHandler(this.LaunchEditor);
+            this.PictureList.ItemActivate += new System.EventHandler(this.LaunchEditor);
             // 
             // label1
             // 
@@ -72,7 +73,6 @@
             this.Controls.Add(this.PictureList);
             this.Name = "PhotoBrowser";
             this.Text = "Form1";
-            this.DoubleClick += new System.EventHandler(this.LaunchEditor);
             this.ResumeLayout(false);
             this.PerformLayout();
 

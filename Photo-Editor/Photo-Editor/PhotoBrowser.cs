@@ -40,6 +40,8 @@ namespace Photo_Editor
             }
         }
 
+
+
         private void LaunchEditor(object sender, EventArgs e)
         {
             string x = photoDirectory + "\\" + PictureList.SelectedItems[0].Text;
