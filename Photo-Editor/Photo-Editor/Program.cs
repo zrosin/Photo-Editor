@@ -14,6 +14,7 @@ namespace Photo_Editor
         [STAThread]
         static void Main()
         {
+            //This is a test comment
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new PhotoBrowser());
