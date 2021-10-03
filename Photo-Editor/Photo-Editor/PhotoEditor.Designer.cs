@@ -33,22 +33,35 @@
             this.tintImage = new System.Windows.Forms.Button();
             this.brightnessBar = new System.Windows.Forms.TrackBar();
             this.tintPicker = new System.Windows.Forms.ColorDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.saveAsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessBar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
             // 
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.Location = new System.Drawing.Point(12, 12);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(379, 326);
+            this.pictureBox.Padding = new System.Windows.Forms.Padding(10);
+            this.pictureBox.Size = new System.Drawing.Size(379, 370);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
             // InvertImage
             // 
-            this.InvertImage.Location = new System.Drawing.Point(156, 459);
+            this.InvertImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InvertImage.Location = new System.Drawing.Point(12, 430);
+            this.InvertImage.MaximumSize = new System.Drawing.Size(75, 23);
+            this.InvertImage.MinimumSize = new System.Drawing.Size(75, 23);
             this.InvertImage.Name = "InvertImage";
             this.InvertImage.Size = new System.Drawing.Size(75, 23);
             this.InvertImage.TabIndex = 1;
@@ -58,7 +71,11 @@
             // 
             // tintImage
             // 
-            this.tintImage.Location = new System.Drawing.Point(278, 459);
+            this.tintImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tintImage.Location = new System.Drawing.Point(12, 459);
+            this.tintImage.MaximumSize = new System.Drawing.Size(75, 23);
+            this.tintImage.MinimumSize = new System.Drawing.Size(75, 23);
             this.tintImage.Name = "tintImage";
             this.tintImage.Size = new System.Drawing.Size(75, 23);
             this.tintImage.TabIndex = 2;
@@ -68,26 +85,82 @@
             // 
             // brightnessBar
             // 
-            this.brightnessBar.Location = new System.Drawing.Point(12, 459);
+            this.brightnessBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.brightnessBar.AutoSize = false;
+            this.brightnessBar.Location = new System.Drawing.Point(12, 401);
+            this.brightnessBar.MaximumSize = new System.Drawing.Size(75, 23);
+            this.brightnessBar.MinimumSize = new System.Drawing.Size(75, 23);
             this.brightnessBar.Name = "brightnessBar";
-            this.brightnessBar.Size = new System.Drawing.Size(104, 45);
+            this.brightnessBar.Size = new System.Drawing.Size(75, 23);
             this.brightnessBar.TabIndex = 3;
+            this.brightnessBar.Value = 5;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Location = new System.Drawing.Point(22, 385);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Brightness";
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Location = new System.Drawing.Point(316, 459);
+            this.cancelButton.MaximumSize = new System.Drawing.Size(75, 23);
+            this.cancelButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 5;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            // 
+            // saveButton
+            // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveButton.Location = new System.Drawing.Point(154, 459);
+            this.saveButton.MaximumSize = new System.Drawing.Size(75, 23);
+            this.saveButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 6;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            // 
+            // saveAsButton
+            // 
+            this.saveAsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveAsButton.Location = new System.Drawing.Point(235, 459);
+            this.saveAsButton.MaximumSize = new System.Drawing.Size(75, 23);
+            this.saveAsButton.MinimumSize = new System.Drawing.Size(75, 23);
+            this.saveAsButton.Name = "saveAsButton";
+            this.saveAsButton.Size = new System.Drawing.Size(75, 23);
+            this.saveAsButton.TabIndex = 7;
+            this.saveAsButton.Text = "Save As";
+            this.saveAsButton.UseVisualStyleBackColor = true;
             // 
             // PhotoEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 494);
+            this.Controls.Add(this.saveAsButton);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.brightnessBar);
             this.Controls.Add(this.tintImage);
             this.Controls.Add(this.InvertImage);
             this.Controls.Add(this.pictureBox);
+            this.MinimumSize = new System.Drawing.Size(360, 450);
             this.Name = "PhotoEditor";
             this.Text = "PhotoEditor";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessBar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -98,5 +171,9 @@
         private System.Windows.Forms.Button tintImage;
         private System.Windows.Forms.TrackBar brightnessBar;
         private System.Windows.Forms.ColorDialog tintPicker;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button saveAsButton;
     }
 }

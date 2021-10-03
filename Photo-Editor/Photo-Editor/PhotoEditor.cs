@@ -12,8 +12,6 @@ namespace Photo_Editor
 {
     public partial class PhotoEditor : Form
     {
-        
-
         private string ImageLocation;
 
         public PhotoEditor()
@@ -27,7 +25,8 @@ namespace Photo_Editor
 
             this.ImageLocation = s;
 
-            pictureBox.Image = Image.FromFile(ImageLocation);
+            byte[] bytes = System.IO.File.ReadAllBytes(ImageLocation);
+            pictureBox.Image = Image.FromStream(new System.IO.MemoryStream(bytes));
         }
 
         
