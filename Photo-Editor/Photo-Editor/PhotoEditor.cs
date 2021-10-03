@@ -50,14 +50,30 @@ namespace Photo_Editor
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 AlterColors(newImage, colorDialog.Color);
+
+                pictureBox.Image = newImage;
             }
 
-            pictureBox.Image = newImage;
+            
         }
 
+        //Not perfect. Technically doesnt handle keyboard input
+        private void brightnessBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            //Verify that left mouse button is what we are working with
+            if (e.Button == MouseButtons.Left)
+            {
+                var newImage = new Bitmap(pictureBox.Image);
+                ChangeBrightness(newImage, brightnessBar.Value * 10);
 
+                pictureBox.Image = newImage;
+            }
+        }
 
-
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
 
 
@@ -144,6 +160,6 @@ namespace Photo_Editor
             }
         }
 
-       
+        
     }
 }

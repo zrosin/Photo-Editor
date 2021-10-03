@@ -95,6 +95,7 @@
             this.brightnessBar.Size = new System.Drawing.Size(75, 23);
             this.brightnessBar.TabIndex = 3;
             this.brightnessBar.Value = 5;
+            this.brightnessBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.brightnessBar_MouseUp);
             // 
             // label1
             // 
@@ -117,6 +118,7 @@
             this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // saveButton
             // 
