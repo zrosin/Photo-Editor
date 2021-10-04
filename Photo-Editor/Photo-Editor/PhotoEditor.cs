@@ -128,10 +128,29 @@ namespace Photo_Editor
             enableForm();
         }
 
-        //Not perfect. Technically doesnt handle keyboard input
         private async void brightnessBar_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
+                //Disable Buttons and start progressbar
+                disableForm();
+                startProgressBar();
+
+                var newImage = new Bitmap(pictureBox.Image);
+                await ChangeBrightness(newImage, brightnessBar.Value * 10);
+
+                if (!cancellationTokenSource.Token.IsCancellationRequested)
+                    pictureBox.Image = newImage;
+
+                //Close progressbar and renable form
+                closeProgressBar();
+                enableForm();
+            }
+        }
+
+        private async void brightnessBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
             {
                 //Disable Buttons and start progressbar
                 disableForm();
