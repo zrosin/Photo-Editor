@@ -110,6 +110,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(316, 459);
             this.cancelButton.MaximumSize = new System.Drawing.Size(75, 23);
             this.cancelButton.MinimumSize = new System.Drawing.Size(75, 23);
@@ -123,6 +124,7 @@
             // saveButton
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.saveButton.Location = new System.Drawing.Point(154, 459);
             this.saveButton.MaximumSize = new System.Drawing.Size(75, 23);
             this.saveButton.MinimumSize = new System.Drawing.Size(75, 23);
@@ -144,6 +146,7 @@
             this.saveAsButton.TabIndex = 7;
             this.saveAsButton.Text = "Save As";
             this.saveAsButton.UseVisualStyleBackColor = true;
+            this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
             // 
             // PhotoEditor
             // 

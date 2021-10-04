@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -99,8 +100,6 @@ namespace Photo_Editor
             enableForm();
         }
 
-        
-
         private async void tintImage_Click(object sender, EventArgs e)
         {
             //Disable Buttons
@@ -175,7 +174,20 @@ namespace Photo_Editor
             pictureBox.Image.Save(imageLocation, ImageFormat.Jpeg);
         }
 
+        private void saveAsButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
+            saveFileDialog1.Filter = "jpeg files (*.jpeg)|*.jpg, *.jpeg|All files (*.*)|*.*";
+            saveFileDialog1.InitialDirectory = Path.GetDirectoryName(imageLocation);
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox.Image.Save(saveFileDialog1.FileName.ToString(), ImageFormat.Jpeg);
+
+                this.DialogResult = DialogResult.OK;
+            }
+        }
 
 
         //Core of this code is from McCown

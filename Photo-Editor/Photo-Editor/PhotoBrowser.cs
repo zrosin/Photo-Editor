@@ -39,6 +39,11 @@ namespace Photo_Editor
                 photoFiles.Add(file);
                 PictureList.Items.Add(file.ToString());
             }
+            foreach (FileInfo file in homeDir.GetFiles("*.jpeg"))
+            {
+                photoFiles.Add(file);
+                PictureList.Items.Add(file.ToString());
+            }
         }
 
 
