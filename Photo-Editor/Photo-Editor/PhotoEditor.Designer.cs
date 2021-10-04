@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhotoEditor));
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.invertImage = new System.Windows.Forms.Button();
             this.tintImage = new System.Windows.Forms.Button();
@@ -161,6 +162,7 @@
             this.Controls.Add(this.tintImage);
             this.Controls.Add(this.invertImage);
             this.Controls.Add(this.pictureBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(360, 450);
             this.Name = "PhotoEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
