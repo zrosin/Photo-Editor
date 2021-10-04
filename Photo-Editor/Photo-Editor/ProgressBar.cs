@@ -34,5 +34,10 @@ namespace Photo_Editor
 
             Close();
         }
+
+        private void ProgressBar_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CancelTransform();
+        }
     }
 }
