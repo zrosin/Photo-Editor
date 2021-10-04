@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.InvertImage = new System.Windows.Forms.Button();
+            this.invertImage = new System.Windows.Forms.Button();
             this.tintImage = new System.Windows.Forms.Button();
             this.brightnessBar = new System.Windows.Forms.TrackBar();
             this.tintPicker = new System.Windows.Forms.ColorDialog();
@@ -55,19 +55,19 @@
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
-            // InvertImage
+            // invertImage
             // 
-            this.InvertImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.invertImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InvertImage.Location = new System.Drawing.Point(12, 430);
-            this.InvertImage.MaximumSize = new System.Drawing.Size(75, 23);
-            this.InvertImage.MinimumSize = new System.Drawing.Size(75, 23);
-            this.InvertImage.Name = "InvertImage";
-            this.InvertImage.Size = new System.Drawing.Size(75, 23);
-            this.InvertImage.TabIndex = 1;
-            this.InvertImage.Text = "Invert";
-            this.InvertImage.UseVisualStyleBackColor = true;
-            this.InvertImage.Click += new System.EventHandler(this.InvertImage_Click);
+            this.invertImage.Location = new System.Drawing.Point(12, 430);
+            this.invertImage.MaximumSize = new System.Drawing.Size(75, 23);
+            this.invertImage.MinimumSize = new System.Drawing.Size(75, 23);
+            this.invertImage.Name = "invertImage";
+            this.invertImage.Size = new System.Drawing.Size(75, 23);
+            this.invertImage.TabIndex = 1;
+            this.invertImage.Text = "Invert";
+            this.invertImage.UseVisualStyleBackColor = true;
+            this.invertImage.Click += new System.EventHandler(this.invertImage_Click);
             // 
             // tintImage
             // 
@@ -155,10 +155,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.brightnessBar);
             this.Controls.Add(this.tintImage);
-            this.Controls.Add(this.InvertImage);
+            this.Controls.Add(this.invertImage);
             this.Controls.Add(this.pictureBox);
             this.MinimumSize = new System.Drawing.Size(360, 450);
             this.Name = "PhotoEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PhotoEditor";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessBar)).EndInit();
@@ -169,7 +170,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button InvertImage;
+        private System.Windows.Forms.Button invertImage;
         private System.Windows.Forms.Button tintImage;
         private System.Windows.Forms.TrackBar brightnessBar;
         private System.Windows.Forms.ColorDialog tintPicker;
