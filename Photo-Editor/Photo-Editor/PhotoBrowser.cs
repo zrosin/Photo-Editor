@@ -24,7 +24,8 @@ namespace Photo_Editor
         public PhotoBrowser()
         {
             InitializeComponent();
-            
+
+            Marqee.Hide();
             //makes the initial directory the MyPictures directory
             photoDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 
@@ -35,41 +36,164 @@ namespace Photo_Editor
         //loads a directory
         private async void loadDirectory()
         {
-            ListDirectory(treeView1, photoDirectory);
-            await PopulateImages();
+            ListDirectory(directoryView, photoDirectory);
+            await PopulateImages(photoDirectory);
         }
 
         //Populates the listview with the images in the selected directory
-        private async Task PopulateImages()
+        private async Task PopulateImages( string directory)
         {
             cancellationTokenSource = new CancellationTokenSource();
 
             await Task.Run(() =>
             {
                 photoFiles = new List<FileInfo>();
-                DirectoryInfo homeDir = new DirectoryInfo(photoDirectory);
+                DirectoryInfo homeDir = new DirectoryInfo(directory);
+                ImageList largeImageList = new ImageList();
+                ImageList smallImageList = new ImageList();
+                largeImageList.ImageSize = new Size(100, 100);
+                smallImageList.ImageSize = new Size(64, 64);
+                int count = 0;
+                
+                
+                //clear the items list for PictureList so that we can populate it with different files
+                if (InvokeRequired)
+                {
+                    Invoke((Action)delegate ()
+                    {
+                        PictureList.Items.Clear();
+                    });
+                }
+                else
+                {
+                    PictureList.Items.Clear();
+                }
+                
+
+                if (InvokeRequired)
+                {
+                    Invoke((Action)delegate ()
+                    {
+                        Marqee.Show();
+                    });
+                }
+                else
+                {
+                    Marqee.Show();
+                }
+                
+
 
                 foreach (FileInfo file in homeDir.GetFiles("*.jpg"))
                 {
-                       photoFiles.Add(file);
-                       PictureList.Items.Add(file.ToString());
+                    byte[] bytes = System.IO.File.ReadAllBytes(file.FullName);
+                    MemoryStream ms = new MemoryStream(bytes);
+                    Image img = Image.FromStream(ms);
+                    String[] buffer = { file.ToString(), file.LastWriteTime.ToString(), file.Length.ToString() + "B" };
+                    ListViewItem item = new ListViewItem(buffer, count);
 
-
-                    //Stop looping if a new directory is selected
-                    if (cancellationTokenSource.Token.IsCancellationRequested)
-                        break;
-                }
-                foreach (FileInfo file in homeDir.GetFiles("*.jpeg"))
-                { 
+                    if (InvokeRequired)
+                    {
+                        Invoke((Action)delegate ()
+                        {
+                            photoFiles.Add(file);
+                            PictureList.Items.Add(item);
+                            largeImageList.Images.Add(img);
+                            smallImageList.Images.Add(img);
+                            PictureList.LargeImageList = largeImageList;
+                            PictureList.SmallImageList = smallImageList;
+                        });
+                    }
+                    else
+                    {
                         photoFiles.Add(file);
-                        PictureList.Items.Add(file.ToString());
+                        PictureList.Items.Add(item);
+                        largeImageList.Images.Add(img);
+                        smallImageList.Images.Add(img);
+                        PictureList.LargeImageList = largeImageList;
+                        PictureList.SmallImageList = smallImageList;
+                    }
 
                     //Stop looping if a new directory is selected
                     if (cancellationTokenSource.Token.IsCancellationRequested)
+                    {
+                        if (InvokeRequired)
+                        {
+                            Invoke((Action)delegate ()
+                            {
+                                Marqee.Hide();
+                            });
+                        }
+                        else
+                        {
+                            Marqee.Hide();
+                        }
                         break;
+                    }
+                    count++;
+                }
+
+                foreach (FileInfo file in homeDir.GetFiles("*.jpeg"))
+                {
+                    byte[] bytes = System.IO.File.ReadAllBytes(file.FullName);
+                    MemoryStream ms = new MemoryStream(bytes);
+                    Image img = Image.FromStream(ms);
+                    String[] buffer = { file.ToString(), file.LastWriteTime.ToString(), file.Length.ToString() + "B" };
+                    ListViewItem item = new ListViewItem(buffer, count);
+
+                    if (InvokeRequired)
+                    {
+                        Invoke((Action)delegate ()
+                        {
+                            photoFiles.Add(file);
+                            PictureList.Items.Add(item);
+                            largeImageList.Images.Add(img);
+                            smallImageList.Images.Add(img);
+                            PictureList.LargeImageList = largeImageList;
+                            PictureList.SmallImageList = smallImageList;
+                        });
+                    }
+                    else
+                    {
+                        photoFiles.Add(file);
+                        PictureList.Items.Add(item);
+                        largeImageList.Images.Add(img);
+                        smallImageList.Images.Add(img);
+                        PictureList.LargeImageList = largeImageList;
+                        PictureList.SmallImageList = smallImageList;
+                    }
+
+                    //Stop looping if a new directory is selected
+                    if (cancellationTokenSource.Token.IsCancellationRequested)
+                    {
+                        if (InvokeRequired)
+                        {
+                            Invoke((Action)delegate ()
+                            {
+                                Marqee.Hide();
+                            });
+                        }
+                        else
+                        {
+                            Marqee.Hide();
+                        }
+                        break;
+                    }
+                    count++;
                 }
             });
-           
+
+            if (InvokeRequired)
+            {
+                Invoke((Action)delegate ()
+                {
+                    Marqee.Hide();
+                });
+            }
+            else
+            {
+                Marqee.Hide();
+            }
         }
 
 
@@ -101,6 +225,11 @@ namespace Photo_Editor
             return directoryNode;
         }
 
+        private void directoryView_AfterSelect(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            
+        }
+
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -109,6 +238,23 @@ namespace Photo_Editor
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //https://stackoverflow.com/questions/11624298/how-to-use-openfiledialog-to-select-a-folder/11624322 helped me with a problem I had with opening the directory
+        private void selectRootFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFolderDialog = new OpenFileDialog();
+            openFolderDialog.InitialDirectory = photoDirectory;
+            openFolderDialog.ValidateNames = false;
+            openFolderDialog.CheckFileExists = false;
+            openFolderDialog.CheckPathExists = true;
+            openFolderDialog.FileName = "Folder Selection.";
+            if (openFolderDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Get the path of specified directory
+                photoDirectory = Path.GetDirectoryName(openFolderDialog.FileName);
+                loadDirectory();
+            }
         }
     }
 }

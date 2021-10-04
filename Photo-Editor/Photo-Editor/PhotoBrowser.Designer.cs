@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PhotoBrowser));
             this.PictureList = new System.Windows.Forms.ListView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.directoryView = new System.Windows.Forms.TreeView();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.locateOnDiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectRootFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,16 +40,23 @@
             this.veiwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.Marqee = new System.Windows.Forms.ProgressBar();
+            this.fileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lastModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // PictureList
             // 
+            this.PictureList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.fileName,
+            this.lastModified,
+            this.fileSize});
             this.PictureList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureList.HideSelection = false;
             this.PictureList.Location = new System.Drawing.Point(0, 0);
@@ -58,6 +65,7 @@
             this.PictureList.Size = new System.Drawing.Size(476, 401);
             this.PictureList.TabIndex = 0;
             this.PictureList.UseCompatibleStateImageBehavior = false;
+            this.PictureList.View = System.Windows.Forms.View.Details;
             this.PictureList.ItemActivate += new System.EventHandler(this.LaunchEditor);
             // 
             // splitContainer1
@@ -67,7 +75,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            this.splitContainer1.Panel1.Controls.Add(this.directoryView);
             // 
             // splitContainer1.Panel2
             // 
@@ -76,26 +84,26 @@
             this.splitContainer1.SplitterDistance = 323;
             this.splitContainer1.TabIndex = 3;
             // 
-            // treeView1
+            // directoryView
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(323, 401);
-            this.treeView1.TabIndex = 3;
+            this.directoryView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.directoryView.Location = new System.Drawing.Point(0, 0);
+            this.directoryView.Name = "directoryView";
+            this.directoryView.Size = new System.Drawing.Size(323, 401);
+            this.directoryView.TabIndex = 3;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.veiwToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip.TabIndex = 4;
+            this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -118,6 +126,7 @@
             this.selectRootFolderToolStripMenuItem.Name = "selectRootFolderToolStripMenuItem";
             this.selectRootFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selectRootFolderToolStripMenuItem.Text = "Select Root Folder";
+            this.selectRootFolderToolStripMenuItem.Click += new System.EventHandler(this.selectRootFolderToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -146,31 +155,46 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // progressBar1
+            // Marqee
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 24);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(766, 23);
-            this.progressBar1.TabIndex = 5;
+            this.Marqee.Location = new System.Drawing.Point(12, 24);
+            this.Marqee.Name = "Marqee";
+            this.Marqee.Size = new System.Drawing.Size(766, 23);
+            this.Marqee.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.Marqee.TabIndex = 5;
+            // 
+            // fileName
+            // 
+            this.fileName.Text = "Name";
+            this.fileName.Width = 274;
+            // 
+            // lastModified
+            // 
+            this.lastModified.Text = "Date";
+            this.lastModified.Width = 133;
+            // 
+            // fileSize
+            // 
+            this.fileSize.Text = "Size";
             // 
             // PhotoBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.Marqee);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "PhotoBrowser";
             this.Text = "Photo Browser";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,8 +204,8 @@
 
         private System.Windows.Forms.ListView PictureList;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.TreeView directoryView;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem locateOnDiskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectRootFolderToolStripMenuItem;
@@ -189,7 +213,10 @@
         private System.Windows.Forms.ToolStripMenuItem veiwToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar Marqee;
+        private System.Windows.Forms.ColumnHeader fileName;
+        private System.Windows.Forms.ColumnHeader lastModified;
+        private System.Windows.Forms.ColumnHeader fileSize;
     }
 }
 
