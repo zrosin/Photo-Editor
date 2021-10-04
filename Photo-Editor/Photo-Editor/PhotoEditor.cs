@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,7 +14,7 @@ namespace Photo_Editor
 {
     public partial class PhotoEditor : Form
     {
-        private string ImageLocation;
+        private string imageLocation;
         ProgressBar progressBar;
         private CancellationTokenSource cancellationTokenSource;
 
@@ -26,9 +27,9 @@ namespace Photo_Editor
         {
             InitializeComponent();
 
-            this.ImageLocation = s;
+            this.imageLocation = s;
 
-            byte[] bytes = System.IO.File.ReadAllBytes(ImageLocation);
+            byte[] bytes = System.IO.File.ReadAllBytes(imageLocation);
             pictureBox.Image = Image.FromStream(new System.IO.MemoryStream(bytes));
         }
 
@@ -169,7 +170,10 @@ namespace Photo_Editor
             { }
         }
 
-
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            pictureBox.Image.Save(imageLocation, ImageFormat.Jpeg);
+        }
 
 
 
@@ -277,5 +281,7 @@ namespace Photo_Editor
                 }
             });
         }
+
+        
     }
 }
