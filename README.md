@@ -9,13 +9,16 @@ Allows user to browse and edit photos.
 
 ## Contribution
 Jacob
+---
 	- Browser functionality
 		1. Image Preview
 		2. Threading
 		3. Locate on Disk
 		4. Root Folder Selection
 		5. View Changer
+		
 Zach
+---
 	- Initial setup
 	- Procrastination Deadline
 	- All of the Editor functionality
