@@ -212,15 +212,15 @@ namespace Photo_Editor
 
             PhotoEditor photoEditor = new PhotoEditor(x);
 
+            //Refresh Directory and ImageList after save, which will have potentially changed one or both.
             if (photoEditor.ShowDialog() == DialogResult.OK)
             {
                 //Call function to refresh tree view
+                loadDirectory();
 
-
-                //This isn't actually needed. Once treeview is refreshed afterselect will actually do this
-                //No need to await this. It can run in background no problem.
                 cancellationTokenSource.Cancel();
                 cancellationTokenSource = new CancellationTokenSource();
+                //This gives a warning but we have no reason to await this.
                 PopulateImages(currentDirectory);
             }
         }
@@ -331,9 +331,5 @@ namespace Photo_Editor
             }
         }
 
-        private async void directoryView_NodeMouseClick_1(object sender, TreeNodeMouseClickEventArgs e)
-        {
-
-        }
     }
 }

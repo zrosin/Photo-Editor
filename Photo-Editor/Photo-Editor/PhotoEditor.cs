@@ -191,6 +191,7 @@ namespace Photo_Editor
         private void saveButton_Click(object sender, EventArgs e)
         {
             pictureBox.Image.Save(imageLocation, ImageFormat.Jpeg);
+            this.DialogResult = DialogResult.OK;
         }
 
         private void saveAsButton_Click(object sender, EventArgs e)

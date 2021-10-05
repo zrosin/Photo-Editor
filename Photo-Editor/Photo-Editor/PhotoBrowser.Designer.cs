@@ -115,7 +115,6 @@
             this.directoryView.Size = new System.Drawing.Size(244, 408);
             this.directoryView.TabIndex = 3;
             this.directoryView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.directoryView_AfterSelect);
-            this.directoryView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.directoryView_NodeMouseClick_1);
             // 
             // menuStrip
             // 
