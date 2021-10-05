@@ -212,7 +212,17 @@ namespace Photo_Editor
 
             PhotoEditor photoEditor = new PhotoEditor(x);
 
-            photoEditor.ShowDialog();
+            if (photoEditor.ShowDialog() == DialogResult.OK)
+            {
+                //Call function to refresh tree view
+
+
+                //This isn't actually needed. Once treeview is refreshed afterselect will actually do this
+                //No need to await this. It can run in background no problem.
+                cancellationTokenSource.Cancel();
+                cancellationTokenSource = new CancellationTokenSource();
+                PopulateImages(currentDirectory);
+            }
         }
 
         //The next two functions work together to poulate the treeview 
