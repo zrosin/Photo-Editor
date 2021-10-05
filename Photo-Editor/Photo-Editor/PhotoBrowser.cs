@@ -43,7 +43,7 @@ namespace Photo_Editor
         //Populates the listview with the images in the selected directory
         private async Task PopulateImages( string directory)
         {
-            CancellationTokenSource test = cancellationTokenSource;
+            CancellationTokenSource originalToken = cancellationTokenSource;
 
             await Task.Run(() =>
             {
@@ -94,7 +94,7 @@ namespace Photo_Editor
                     ListViewItem item = new ListViewItem(buffer, count);
 
                     //Stop looping if a new directory is selected
-                    if (test.Token.IsCancellationRequested)
+                    if (originalToken.Token.IsCancellationRequested)
                     {
                         if (InvokeRequired)
                         {
@@ -148,7 +148,7 @@ namespace Photo_Editor
                     ListViewItem item = new ListViewItem(buffer, count);
 
                     //Stop looping if a new directory is selected
-                    if (test.Token.IsCancellationRequested)
+                    if (originalToken.Token.IsCancellationRequested)
                     {
                         if (InvokeRequired)
                         {

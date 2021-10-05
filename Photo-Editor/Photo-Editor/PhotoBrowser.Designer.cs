@@ -62,7 +62,7 @@
             this.PictureList.Location = new System.Drawing.Point(0, 0);
             this.PictureList.MultiSelect = false;
             this.PictureList.Name = "PictureList";
-            this.PictureList.Size = new System.Drawing.Size(476, 401);
+            this.PictureList.Size = new System.Drawing.Size(475, 408);
             this.PictureList.TabIndex = 0;
             this.PictureList.UseCompatibleStateImageBehavior = false;
             this.PictureList.View = System.Windows.Forms.View.Details;
@@ -87,7 +87,7 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(0, 53);
+            this.splitContainer1.Location = new System.Drawing.Point(11, 55);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -97,17 +97,18 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.PictureList);
-            this.splitContainer1.Size = new System.Drawing.Size(803, 401);
-            this.splitContainer1.SplitterDistance = 323;
+            this.splitContainer1.Size = new System.Drawing.Size(723, 408);
+            this.splitContainer1.SplitterDistance = 244;
             this.splitContainer1.TabIndex = 3;
             // 
             // directoryView
             // 
-            this.directoryView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.directoryView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.directoryView.Location = new System.Drawing.Point(0, 0);
             this.directoryView.Name = "directoryView";
-            this.directoryView.Size = new System.Drawing.Size(321, 401);
+            this.directoryView.Size = new System.Drawing.Size(244, 408);
             this.directoryView.TabIndex = 3;
             this.directoryView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.directoryView_AfterSelect);
             this.directoryView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.directoryView_NodeMouseClick_1);
@@ -120,7 +121,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip.Size = new System.Drawing.Size(746, 24);
             this.menuStrip.TabIndex = 4;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -172,15 +173,17 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // Marqee
             // 
+            this.Marqee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Marqee.Location = new System.Drawing.Point(12, 24);
             this.Marqee.Name = "Marqee";
-            this.Marqee.Size = new System.Drawing.Size(766, 23);
+            this.Marqee.Size = new System.Drawing.Size(722, 23);
             this.Marqee.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.Marqee.TabIndex = 5;
             // 
@@ -188,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(746, 475);
             this.Controls.Add(this.Marqee);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip);
