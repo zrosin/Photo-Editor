@@ -21,7 +21,6 @@ namespace Photo_Editor
         public ListBox.ObjectCollection Items { get; }
         private CancellationTokenSource cancellationTokenSource;
 
-        //This does a thing
         public PhotoBrowser()
         {
             InitializeComponent();
@@ -239,6 +238,7 @@ namespace Photo_Editor
 
         }
 
+        //The next two listeners add functions to the tool strip
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -261,6 +261,7 @@ namespace Photo_Editor
             }
         }
 
+        //Allows the user to select a new directory to display on the ListView
         private async void directoryView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (cancellationTokenSource == null || cancellationTokenSource.Token.IsCancellationRequested)
@@ -279,6 +280,7 @@ namespace Photo_Editor
             await PopulateImages(currentDirectory);
         }
 
+        //Next five listeners all add a function to the tool strip
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox1 aboutBox1 = new AboutBox1();
@@ -308,7 +310,11 @@ namespace Photo_Editor
 
         private void locateOnDiskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filePath = currentDirectory + "\\" + PictureList.SelectedItems[0].Text;
+            string filePath = null;
+            if (PictureList.SelectedItems.Count > 0)
+            {
+                filePath = currentDirectory + "\\" + PictureList.SelectedItems[0].Text;
+            }
             if (File.Exists(filePath))
             {
                 Process.Start(new ProcessStartInfo("explorer.exe", " /select, " + filePath));
