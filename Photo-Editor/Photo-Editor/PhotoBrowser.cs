@@ -15,10 +15,10 @@ namespace Photo_Editor
 
     public partial class PhotoBrowser : Form
     {
-        private string photoDirectory;
+        private string rootDirectory, currentDirectory;
         private List<FileInfo> photoFiles;
         public ListBox.ObjectCollection Items { get; }
-        private CancellationTokenSource cancellationTokenSource;
+        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
         //This does a thing
         public PhotoBrowser()
@@ -27,23 +27,24 @@ namespace Photo_Editor
 
             Marqee.Hide();
             //makes the initial directory the MyPictures directory
-            photoDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            rootDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            currentDirectory = rootDirectory;
 
             //loads the initial directory
             loadDirectory();
         }
 
-        //loads a directory
-        private async void loadDirectory()
+        //loads a directory and populating the treeView
+        private void loadDirectory()
         {
-            ListDirectory(directoryView, photoDirectory);
-            await PopulateImages(photoDirectory);
+            ListDirectory(directoryView, rootDirectory);
         }
 
         //Populates the listview with the images in the selected directory
         private async Task PopulateImages( string directory)
         {
-            cancellationTokenSource = new CancellationTokenSource();
+            //cancellationTokenSource = new CancellationTokenSource();
+            bool isCanceled = false;
 
             await Task.Run(() =>
             {
@@ -83,15 +84,35 @@ namespace Photo_Editor
                 }
                 
 
-
+                //loads all images of the .jpg type
                 foreach (FileInfo file in homeDir.GetFiles("*.jpg"))
                 {
+                    //load the file and image and puts them into a ListViewItem to be put into the list
                     byte[] bytes = System.IO.File.ReadAllBytes(file.FullName);
                     MemoryStream ms = new MemoryStream(bytes);
                     Image img = Image.FromStream(ms);
                     String[] buffer = { file.ToString(), file.LastWriteTime.ToString(), file.Length.ToString() + "B" };
                     ListViewItem item = new ListViewItem(buffer, count);
 
+                    //Stop looping if a new directory is selected
+                    if (cancellationTokenSource.Token.IsCancellationRequested || isCanceled)
+                    {
+                        if (InvokeRequired)
+                        {
+                            Invoke((Action)delegate ()
+                            {
+                                Marqee.Hide();
+                            });
+                        }
+                        else
+                        {
+                            Marqee.Hide();
+                        }
+                        isCanceled = true;
+                        break;
+                    }
+
+                    //adds the ListViewItem to the list
                     if (InvokeRequired)
                     {
                         Invoke((Action)delegate ()
@@ -114,33 +135,38 @@ namespace Photo_Editor
                         PictureList.SmallImageList = smallImageList;
                     }
 
-                    //Stop looping if a new directory is selected
-                    if (cancellationTokenSource.Token.IsCancellationRequested)
-                    {
-                        if (InvokeRequired)
-                        {
-                            Invoke((Action)delegate ()
-                            {
-                                Marqee.Hide();
-                            });
-                        }
-                        else
-                        {
-                            Marqee.Hide();
-                        }
-                        break;
-                    }
+
                     count++;
                 }
 
+                //loads all images of the .jpeg type
                 foreach (FileInfo file in homeDir.GetFiles("*.jpeg"))
                 {
+                    //load the file and image and puts them into a ListViewItem to be put into the list
                     byte[] bytes = System.IO.File.ReadAllBytes(file.FullName);
                     MemoryStream ms = new MemoryStream(bytes);
                     Image img = Image.FromStream(ms);
                     String[] buffer = { file.ToString(), file.LastWriteTime.ToString(), file.Length.ToString() + "B" };
                     ListViewItem item = new ListViewItem(buffer, count);
 
+                    //Stop looping if a new directory is selected
+                    if (cancellationTokenSource.Token.IsCancellationRequested || isCanceled)
+                    {
+                        if (InvokeRequired)
+                        {
+                            Invoke((Action)delegate ()
+                            {
+                                Marqee.Hide();
+                            });
+                        }
+                        else
+                        {
+                            Marqee.Hide();
+                        }
+                        break;
+                    }
+
+                    //adds the ListViewItem to the list
                     if (InvokeRequired)
                     {
                         Invoke((Action)delegate ()
@@ -163,22 +189,6 @@ namespace Photo_Editor
                         PictureList.SmallImageList = smallImageList;
                     }
 
-                    //Stop looping if a new directory is selected
-                    if (cancellationTokenSource.Token.IsCancellationRequested)
-                    {
-                        if (InvokeRequired)
-                        {
-                            Invoke((Action)delegate ()
-                            {
-                                Marqee.Hide();
-                            });
-                        }
-                        else
-                        {
-                            Marqee.Hide();
-                        }
-                        break;
-                    }
                     count++;
                 }
             });
@@ -200,7 +210,7 @@ namespace Photo_Editor
         //Opens the photo editor
         private void LaunchEditor(object sender, EventArgs e)
         {
-            string x = photoDirectory + "\\" + PictureList.SelectedItems[0].Text;
+            string x = rootDirectory + "\\" + PictureList.SelectedItems[0].Text;
 
             PhotoEditor photoEditor = new PhotoEditor(x);
 
@@ -225,11 +235,6 @@ namespace Photo_Editor
             return directoryNode;
         }
 
-        private void directoryView_AfterSelect(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            
-        }
-
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -244,7 +249,7 @@ namespace Photo_Editor
         private void selectRootFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFolderDialog = new OpenFileDialog();
-            openFolderDialog.InitialDirectory = photoDirectory;
+            openFolderDialog.InitialDirectory = rootDirectory;
             openFolderDialog.ValidateNames = false;
             openFolderDialog.CheckFileExists = false;
             openFolderDialog.CheckPathExists = true;
@@ -252,9 +257,33 @@ namespace Photo_Editor
             if (openFolderDialog.ShowDialog() == DialogResult.OK)
             {
                 //Get the path of specified directory
-                photoDirectory = Path.GetDirectoryName(openFolderDialog.FileName);
+                rootDirectory = Path.GetDirectoryName(openFolderDialog.FileName);
                 loadDirectory();
             }
+        }
+
+        private async void directoryView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (cancellationTokenSource == null || cancellationTokenSource.Token.IsCancellationRequested)
+            {
+                cancellationTokenSource = new CancellationTokenSource();
+            }    
+            else
+            {
+                cancellationTokenSource.Cancel();
+                cancellationTokenSource = new CancellationTokenSource();
+            }
+                
+            TreeNode selectedNode = e.Node;
+            selectedNode.Expand();
+            //directoryView.Enabled = false;
+            await PopulateImages(Directory.GetParent(rootDirectory).FullName + "\\" + selectedNode.FullPath);
+            //directoryView.Enabled = true;
+        }
+
+        private async void directoryView_NodeMouseClick_1(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
         }
     }
 }
