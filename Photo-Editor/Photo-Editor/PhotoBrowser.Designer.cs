@@ -84,6 +84,9 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Location = new System.Drawing.Point(0, 53);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -100,10 +103,11 @@
             // 
             // directoryView
             // 
-            this.directoryView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.directoryView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.directoryView.Location = new System.Drawing.Point(0, 0);
             this.directoryView.Name = "directoryView";
-            this.directoryView.Size = new System.Drawing.Size(323, 401);
+            this.directoryView.Size = new System.Drawing.Size(321, 401);
             this.directoryView.TabIndex = 3;
             this.directoryView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.directoryView_AfterSelect);
             this.directoryView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.directoryView_NodeMouseClick_1);

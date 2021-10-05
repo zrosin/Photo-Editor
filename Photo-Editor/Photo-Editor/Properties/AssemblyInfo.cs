@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Photo-Editor")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Photo Editor Project")]
+[assembly: AssemblyDescription("Simple photo editor and browser. To use, select a directory and double click on an image you want to edit, launching the edit tool.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Photo-Editor")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCompany("Jacob Ralls, Zach Rosin")]
+[assembly: AssemblyProduct("Photo Editor Project")]
+[assembly: AssemblyCopyright("Copyright? No")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
