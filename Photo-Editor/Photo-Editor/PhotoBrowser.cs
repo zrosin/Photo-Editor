@@ -107,7 +107,6 @@ namespace Photo_Editor
                         {
                             Marqee.Hide();
                         }
-                        isCanceled = true;
                         break;
                     }
 
@@ -278,6 +277,12 @@ namespace Photo_Editor
             //directoryView.Enabled = false;
             await PopulateImages(Directory.GetParent(rootDirectory).FullName + "\\" + selectedNode.FullPath);
             //directoryView.Enabled = true;
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutBox1 = new AboutBox1();
+            aboutBox1.ShowDialog();
         }
 
         private async void directoryView_NodeMouseClick_1(object sender, TreeNodeMouseClickEventArgs e)
