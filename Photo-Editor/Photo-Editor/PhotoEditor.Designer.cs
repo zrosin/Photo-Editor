@@ -65,7 +65,7 @@
             this.invertImage.MinimumSize = new System.Drawing.Size(75, 23);
             this.invertImage.Name = "invertImage";
             this.invertImage.Size = new System.Drawing.Size(75, 23);
-            this.invertImage.TabIndex = 1;
+            this.invertImage.TabIndex = 2;
             this.invertImage.Text = "Invert";
             this.invertImage.UseVisualStyleBackColor = true;
             this.invertImage.Click += new System.EventHandler(this.invertImage_Click);
@@ -79,7 +79,7 @@
             this.tintImage.MinimumSize = new System.Drawing.Size(75, 23);
             this.tintImage.Name = "tintImage";
             this.tintImage.Size = new System.Drawing.Size(75, 23);
-            this.tintImage.TabIndex = 2;
+            this.tintImage.TabIndex = 3;
             this.tintImage.Text = "Tint";
             this.tintImage.UseVisualStyleBackColor = true;
             this.tintImage.Click += new System.EventHandler(this.tintImage_Click);
@@ -94,8 +94,9 @@
             this.brightnessBar.MinimumSize = new System.Drawing.Size(75, 23);
             this.brightnessBar.Name = "brightnessBar";
             this.brightnessBar.Size = new System.Drawing.Size(75, 23);
-            this.brightnessBar.TabIndex = 3;
+            this.brightnessBar.TabIndex = 1;
             this.brightnessBar.Value = 5;
+            this.brightnessBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.brightnessBar_KeyDown);
             this.brightnessBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.brightnessBar_MouseUp);
             // 
             // label1
@@ -117,7 +118,7 @@
             this.cancelButton.MinimumSize = new System.Drawing.Size(75, 23);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 5;
+            this.cancelButton.TabIndex = 6;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -131,7 +132,7 @@
             this.saveButton.MinimumSize = new System.Drawing.Size(75, 23);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 6;
+            this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -144,7 +145,7 @@
             this.saveAsButton.MinimumSize = new System.Drawing.Size(75, 23);
             this.saveAsButton.Name = "saveAsButton";
             this.saveAsButton.Size = new System.Drawing.Size(75, 23);
-            this.saveAsButton.TabIndex = 7;
+            this.saveAsButton.TabIndex = 5;
             this.saveAsButton.Text = "Save As";
             this.saveAsButton.UseVisualStyleBackColor = true;
             this.saveAsButton.Click += new System.EventHandler(this.saveAsButton_Click);
