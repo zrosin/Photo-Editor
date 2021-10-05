@@ -44,6 +44,10 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Marqee = new System.Windows.Forms.ProgressBar();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.detailedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.smallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.largeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -131,6 +135,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.locateOnDiskToolStripMenuItem,
             this.selectRootFolderToolStripMenuItem,
+            this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -139,28 +144,33 @@
             // locateOnDiskToolStripMenuItem
             // 
             this.locateOnDiskToolStripMenuItem.Name = "locateOnDiskToolStripMenuItem";
-            this.locateOnDiskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.locateOnDiskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.locateOnDiskToolStripMenuItem.Text = "Locate on Disk";
+            this.locateOnDiskToolStripMenuItem.Click += new System.EventHandler(this.locateOnDiskToolStripMenuItem_Click);
             // 
             // selectRootFolderToolStripMenuItem
             // 
             this.selectRootFolderToolStripMenuItem.Name = "selectRootFolderToolStripMenuItem";
-            this.selectRootFolderToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.selectRootFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selectRootFolderToolStripMenuItem.Text = "Select Root Folder";
             this.selectRootFolderToolStripMenuItem.Click += new System.EventHandler(this.selectRootFolderToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // veiwToolStripMenuItem
             // 
+            this.veiwToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detailedToolStripMenuItem,
+            this.smallToolStripMenuItem,
+            this.largeToolStripMenuItem});
             this.veiwToolStripMenuItem.Name = "veiwToolStripMenuItem";
-            this.veiwToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.veiwToolStripMenuItem.Text = "Veiw";
+            this.veiwToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.veiwToolStripMenuItem.Text = "View";
             // 
             // helpToolStripMenuItem
             // 
@@ -186,6 +196,37 @@
             this.Marqee.Size = new System.Drawing.Size(722, 23);
             this.Marqee.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.Marqee.TabIndex = 5;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // detailedToolStripMenuItem
+            // 
+            this.detailedToolStripMenuItem.Checked = true;
+            this.detailedToolStripMenuItem.CheckOnClick = true;
+            this.detailedToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.detailedToolStripMenuItem.Name = "detailedToolStripMenuItem";
+            this.detailedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.detailedToolStripMenuItem.Text = "Details";
+            this.detailedToolStripMenuItem.Click += new System.EventHandler(this.detailedToolStripMenuItem_Click);
+            // 
+            // smallToolStripMenuItem
+            // 
+            this.smallToolStripMenuItem.CheckOnClick = true;
+            this.smallToolStripMenuItem.Name = "smallToolStripMenuItem";
+            this.smallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.smallToolStripMenuItem.Text = "Small";
+            this.smallToolStripMenuItem.Click += new System.EventHandler(this.smallToolStripMenuItem_Click);
+            // 
+            // largeToolStripMenuItem
+            // 
+            this.largeToolStripMenuItem.CheckOnClick = true;
+            this.largeToolStripMenuItem.Name = "largeToolStripMenuItem";
+            this.largeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.largeToolStripMenuItem.Text = "Large";
+            this.largeToolStripMenuItem.Click += new System.EventHandler(this.largeToolStripMenuItem_Click);
             // 
             // PhotoBrowser
             // 
@@ -227,6 +268,10 @@
         private System.Windows.Forms.ColumnHeader fileName;
         private System.Windows.Forms.ColumnHeader lastModified;
         private System.Windows.Forms.ColumnHeader fileSize;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem detailedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem smallToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem largeToolStripMenuItem;
     }
 }
 

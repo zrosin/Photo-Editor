@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Photo_Editor
 {
@@ -208,7 +209,7 @@ namespace Photo_Editor
         //Opens the photo editor
         private void LaunchEditor(object sender, EventArgs e)
         {
-            string x = rootDirectory + "\\" + PictureList.SelectedItems[0].Text;
+            string x = currentDirectory + "\\" + PictureList.SelectedItems[0].Text;
 
             PhotoEditor photoEditor = new PhotoEditor(x);
 
@@ -274,15 +275,44 @@ namespace Photo_Editor
                 
             TreeNode selectedNode = e.Node;
             selectedNode.Expand();
-            //directoryView.Enabled = false;
-            await PopulateImages(Directory.GetParent(rootDirectory).FullName + "\\" + selectedNode.FullPath);
-            //directoryView.Enabled = true;
+            currentDirectory = Directory.GetParent(rootDirectory).FullName + "\\" + selectedNode.FullPath;
+            await PopulateImages(currentDirectory);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox1 aboutBox1 = new AboutBox1();
             aboutBox1.ShowDialog();
+        }
+
+        private void detailedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureList.View = View.Details;
+            smallToolStripMenuItem.Checked = false;
+            largeToolStripMenuItem.Checked = false;
+        }
+
+        private void smallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureList.View = View.SmallIcon;
+            detailedToolStripMenuItem.Checked = false;
+            largeToolStripMenuItem.Checked = false;
+        }
+
+        private void largeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureList.View = View.LargeIcon;
+            detailedToolStripMenuItem.Checked = false;
+            smallToolStripMenuItem.Checked = false;
+        }
+
+        private void locateOnDiskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string filePath = currentDirectory + "\\" + PictureList.SelectedItems[0].Text;
+            if (File.Exists(filePath))
+            {
+                Process.Start(new ProcessStartInfo("explorer.exe", " /select, " + filePath));
+            }
         }
 
         private async void directoryView_NodeMouseClick_1(object sender, TreeNodeMouseClickEventArgs e)
