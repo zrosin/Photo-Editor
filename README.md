@@ -6,6 +6,7 @@ Allows user to browse and edit photos.
 
 ## Extra Credit
 1. Save As
+2. Splitter
 
 ## Contribution
 Jacob - 50%
