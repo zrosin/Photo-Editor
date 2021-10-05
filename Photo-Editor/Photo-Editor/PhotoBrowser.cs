@@ -18,7 +18,7 @@ namespace Photo_Editor
         private string rootDirectory, currentDirectory;
         private List<FileInfo> photoFiles;
         public ListBox.ObjectCollection Items { get; }
-        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private CancellationTokenSource cancellationTokenSource;
 
         //This does a thing
         public PhotoBrowser()
@@ -43,8 +43,7 @@ namespace Photo_Editor
         //Populates the listview with the images in the selected directory
         private async Task PopulateImages( string directory)
         {
-            //cancellationTokenSource = new CancellationTokenSource();
-            bool isCanceled = false;
+            CancellationTokenSource test = cancellationTokenSource;
 
             await Task.Run(() =>
             {
@@ -95,7 +94,7 @@ namespace Photo_Editor
                     ListViewItem item = new ListViewItem(buffer, count);
 
                     //Stop looping if a new directory is selected
-                    if (cancellationTokenSource.Token.IsCancellationRequested || isCanceled)
+                    if (test.Token.IsCancellationRequested)
                     {
                         if (InvokeRequired)
                         {
@@ -150,7 +149,7 @@ namespace Photo_Editor
                     ListViewItem item = new ListViewItem(buffer, count);
 
                     //Stop looping if a new directory is selected
-                    if (cancellationTokenSource.Token.IsCancellationRequested || isCanceled)
+                    if (test.Token.IsCancellationRequested)
                     {
                         if (InvokeRequired)
                         {
