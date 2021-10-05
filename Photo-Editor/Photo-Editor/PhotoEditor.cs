@@ -295,8 +295,6 @@ namespace Photo_Editor
                         requestUpdateProgressBar(progress);
                     }
 
-
-
                     for (int x = 0; x < transformedBitmap.Width; x++)
                     {
                         if (cancellationTokenSource.Token.IsCancellationRequested)

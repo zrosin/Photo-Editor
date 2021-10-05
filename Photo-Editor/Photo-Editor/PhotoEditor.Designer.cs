@@ -167,7 +167,7 @@
             this.MinimumSize = new System.Drawing.Size(360, 450);
             this.Name = "PhotoEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "PhotoEditor";
+            this.Text = "Photo Editor";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessBar)).EndInit();
             this.ResumeLayout(false);
