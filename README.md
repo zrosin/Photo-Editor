@@ -1,5 +1,5 @@
 # Photo-Editor
-# Jacob Rails and Zach Rosin
+# Jacob Ralls and Zach Rosin
 
 ## Function
 Allows user to browse and edit photos. 
