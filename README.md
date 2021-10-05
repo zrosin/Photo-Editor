@@ -8,7 +8,7 @@ Allows user to browse and edit photos.
 1. Save As
 
 ## Contribution
-Jacob
+Jacob - 50%
 ---
 	- Browser functionality
 		1. Image Preview
@@ -17,7 +17,7 @@ Jacob
 		4. Root Folder Selection
 		5. View Changer
 		
-Zach
+Zach - 50%
 ---
 	- Initial setup
 	- Procrastination Deadline
